@@ -8,7 +8,7 @@ def home(request):
 
 
 def todo_list(request):
-    todos = Todo.objects.filter(complete=True)
+    todos = Todo.objects.filter(complete=False)
     return render(request, "todo_list.html", {"todos": todos})
 
 

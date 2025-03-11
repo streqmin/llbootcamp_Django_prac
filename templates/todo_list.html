@@ -7,33 +7,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="none" />
         <meta name="keywords" content="none" />
-        <title>Todo list</title>
+        <title>Todo 목록 앱</title>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
         {% bootstrap_css %}
         {% bootstrap_javascript %}
     </head>
     <body>
         <div class="container">
-            <h1>Done list</h1>
+            <h1>TODO 목록 앱</h1>
             <p>
-                <a href="{% url 'todo_list' %}" class="btn btn-primary">홈으로</a>
+                <a href="{% url 'todo_post' %}">
+                    <i class="bi-plus"></i>
+                    Add Todo
+                </a>
+                <a href="" class="btn btn-primary" style="float:right">완료한 Todo 목록</a>
             </p>
             <ul class="list-group">
-                {% comment %} {% for todo in todos %}
-                    <li class="list-group-item">
-                        <a href="{% url 'todo_detail' pk=done.pk %}">{{ todo.title }}</a>
-                        {% if todo.important %}<span class="badge badge-danger">!</span>{% endif %}
-                    </li>
-                {% endfor %} {% endcomment %}
                 {% for todo in todos %}
-                    {{ todo.title }}
-                    {{ todo.description }}
-                    {{ todo.important }}
-                    {{ todo.created }}
-                    <br />
+                    <li class="list-group-item">
+                        <a href="">{{ todo.title }}</a>
+                        {% if todo.important %}<span class="badge badge-danger">!</span>{% endif %}
+                        <div style="float:right">
+                            <a href="" class="btn btn-danger">완료</a>
+                            <a href="" class="btn btn-outline-primary">수정하기</a>
+                        </div>
+                    </li>
                 {% endfor %}
-                {% lorem %}
-                {% lorem 3 p %}
-                {% lorem 2 w random %}
             </ul>
         </div>
     </body>
