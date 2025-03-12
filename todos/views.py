@@ -45,3 +45,17 @@ def todo_edit(request, pk):
         form = TodoForm(instance=todo)  # 레코드,튜플 #
 
     return render(request, "todo_post.html", {"form": form})
+
+
+def todo_done(request, pk):
+    todo = Todo.objects.get(id=pk)
+    todo.complete = True
+    todo.save()
+    return redirect("todo_list")
+
+
+def done_list(request):
+    dones = Todo.objects.filter(complete=True)
+    return render(request, "todo_done.html", {"dones": dones})
+
+
