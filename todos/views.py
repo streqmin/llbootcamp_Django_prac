@@ -1,6 +1,12 @@
 from django.shortcuts import render, redirect
 from .forms import TodoForm
 from .models import Todo
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
+from django.http import JsonResponse
+from .serializers import TodoSerializer
 
 
 def home(request):
@@ -59,3 +65,17 @@ def done_list(request):
     return render(request, "todo_done.html", {"dones": dones})
 
 
+# @api_view(["GET"])
+# def todo_drf(request):
+#     return Response({"message": "Hello World!"})
+
+
+# def todo_drf(request):
+#     return JsonResponse({"message": "Hello World!"})
+
+
+class TodoAPIView(APIView):
+    def get(self, request):
+        todos = Todo.objects.all()
+        serializer = TodoSerializer(todos, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

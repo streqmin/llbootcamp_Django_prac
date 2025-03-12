@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "todos",
     "django_bootstrap5",
     "debug_toolbar",
+    "rest_framework",
+    "django_filters",
 ]
 
 MIDDLEWARE = [

@@ -11,7 +11,8 @@ urlpatterns = [
     path("<int:pk>/edit", views.todo_edit, name="todo_edit"),
     path("<int:pk>/done", views.todo_done, name="todo_done"),
     path("done_list/", views.done_list, name="done_list"),
-    path("drf/", views.todo_drf, name="todo_drf"),
+    # path("drf/", views.todo_drf, name="todo_drf"),
+    path("drf/", views.TodoAPIView.as_view(), name="todo_drf"),
 ]
 
 if settings.DEBUG:
